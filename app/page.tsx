@@ -20,9 +20,9 @@ export default async function Home() {
       <header className="hero">
         <div className="yard-lines" />
         <div className="hero-copy">
-          <div className="eyebrow"><span>●</span> EST. {season} · 12 FRANCHISES · 3 KEEPERS</div>
+          <div className="eyebrow"><span>●</span> EST. {season} · 8 FRANCHISES · 3 KEEPERS</div>
           <h1>NATIONAL KEEPER<br/><em>FOOTBALL LEAGUE</em></h1>
-          <p>Build a dynasty. Ruin a friendship. Leave a legacy.</p>
+          <p>Eight franchises. Two divisions. One trophy. Receipts last forever.</p>
           <div className="hero-actions">
             <a className="button button-primary" href="#standings">ENTER THE LEAGUE</a>
             <a className="button button-ghost" href="#matchups">WEEKLY ACTION</a>
@@ -44,17 +44,17 @@ export default async function Home() {
           <span>•</span>
           <span>{pointsLeader.team} leads the league in scoring</span>
           <span>•</span>
-          <span>Keeper deadline drama is inevitable</span>
+          <span>American and National division races are live</span>
           <span>•</span>
-          <span>Receipts are permanent</span>
+          <span>Every lineup decision goes on the record</span>
         </div>
       </section>
 
       <section className="section" id="standings">
         <div className="section-heading">
           <div>
-            <span className="kicker">THE TABLE</span>
-            <h2>League Standings</h2>
+            <span className="kicker">DIVISION RACES</span>
+            <h2>American vs. National</h2>
           </div>
           <span className={`source-badge ${source}`}>{source === "live" ? "LIVE SLEEPER DATA" : "DEMO MODE"}</span>
         </div>
@@ -146,9 +146,9 @@ export default async function Home() {
           </div>
         </div>
         <div className="versus">
-          <div><span>CK</span><strong>Carolina Chaos</strong></div>
+          <div><span>AC</span><strong>American Division</strong></div>
           <b>VS</b>
-          <div><span>GK</span><strong>Gridiron Kings</strong></div>
+          <div><span>NC</span><strong>National Division</strong></div>
         </div>
       </section>
 
@@ -158,10 +158,10 @@ export default async function Home() {
           <h2>League Format</h2>
         </div>
         <div className="rule-grid">
-          <div><strong>12</strong><span>TEAMS</span></div>
+          <div><strong>8</strong><span>TEAMS</span></div>
           <div><strong>½</strong><span>PPR</span></div>
           <div><strong>3</strong><span>KEEPERS</span></div>
-          <div><strong>6</strong><span>PLAYOFF TEAMS</span></div>
+          <div><strong>4</strong><span>PLAYOFF TEAMS</span></div>
           <div><strong>$200</strong><span>FAAB</span></div>
           <div><strong>∞</strong><span>TRASH TALK</span></div>
         </div>
@@ -177,7 +177,7 @@ export default async function Home() {
           {discord && <a href={discord}>Discord</a>}
           <a href="#top">Back to top ↑</a>
         </div>
-        <p>© {season} NKFL. Built for legends, managed by questionable adults.</p>
+        <p>© {season} NKFL. Built for rivalries, receipts, and keeper-league glory.</p>
       </footer>
     </main>
   );

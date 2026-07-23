@@ -1,3 +1,5 @@
+export type DivisionName = "American" | "National";
+
 export type LeagueUser = {
   user_id: string;
   display_name: string;
@@ -36,6 +38,7 @@ export type Standing = {
   rosterId: number;
   manager: string;
   team: string;
+  division: DivisionName;
   wins: number;
   losses: number;
   ties: number;

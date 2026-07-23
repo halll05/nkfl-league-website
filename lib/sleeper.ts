@@ -1,4 +1,4 @@
-import { demoStandings } from "./demo-data";
+import { demoStandings, divisionAssignments } from "./demo-data";
 import { LeagueUser, Matchup, Roster, Standing } from "./types";
 
 const API = "https://api.sleeper.app/v1";
@@ -38,6 +38,7 @@ export async function getStandings(): Promise<{
     const userById = new Map(users.map((user) => [user.user_id, user]));
 
     const standings = rosters
+      .slice(0, 8)
       .map((roster): Standing => {
         const user = roster.owner_id ? userById.get(roster.owner_id) : undefined;
         const wins = roster.settings?.wins ?? roster.wins ?? 0;
@@ -48,6 +49,7 @@ export async function getStandings(): Promise<{
           rosterId: roster.roster_id,
           manager: user?.display_name ?? "Open Franchise",
           team: user?.metadata?.team_name || `${user?.display_name ?? "Open"} Franchise`,
+          division: divisionAssignments[roster.roster_id] ?? (roster.roster_id <= 4 ? "American" : "National"),
           wins,
           losses,
           ties,

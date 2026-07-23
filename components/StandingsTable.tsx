@@ -1,8 +1,19 @@
 import { Standing } from "@/lib/types";
 
-export function StandingsTable({ standings }: { standings: Standing[] }) {
+function DivisionTable({ title, teams }: { title: string; teams: Standing[] }) {
+  const sortedTeams = [...teams].sort((a, b) => {
+    const winDiff = b.wins - a.wins;
+    if (winDiff !== 0) return winDiff;
+    return b.pointsFor - a.pointsFor;
+  });
+
   return (
-    <div className="table-shell">
+    <div className="division-card">
+      <div className="division-title">
+        <span>{title}</span>
+        <small>{sortedTeams.length} TEAMS</small>
+      </div>
+
       <table>
         <thead>
           <tr>
@@ -15,7 +26,7 @@ export function StandingsTable({ standings }: { standings: Standing[] }) {
           </tr>
         </thead>
         <tbody>
-          {standings.map((team, index) => (
+          {sortedTeams.map((team, index) => (
             <tr key={team.rosterId}>
               <td><span className={`rank rank-${index + 1}`}>{index + 1}</span></td>
               <td>
@@ -30,6 +41,18 @@ export function StandingsTable({ standings }: { standings: Standing[] }) {
           ))}
         </tbody>
       </table>
+    </div>
+  );
+}
+
+export function StandingsTable({ standings }: { standings: Standing[] }) {
+  const american = standings.filter((team) => team.division === "American");
+  const national = standings.filter((team) => team.division === "National");
+
+  return (
+    <div className="division-standings">
+      <DivisionTable title="American Division" teams={american} />
+      <DivisionTable title="National Division" teams={national} />
     </div>
   );
 }
